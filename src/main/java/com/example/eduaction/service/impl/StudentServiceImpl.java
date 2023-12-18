@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void getALLtime(Json[] arr) {
+    public void getALLtime(Json[] arr, String username) {
 
     }
 }

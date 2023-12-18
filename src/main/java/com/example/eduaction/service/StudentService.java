@@ -15,5 +15,5 @@ public interface StudentService {
 
     Integer putCourse(String username, String number);
 
-    void getALLtime(Json[] arr);
+    void getALLtime(Json[] arr, String username);
 }
