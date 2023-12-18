@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选课预览</title>
+    <script src="../../sources/js/vue.js"></script> <!--vue引入-->
+    <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+</head>
+<body>
+<div id="main">
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th>序号</th>
+            <th>课程号</th>
+            <th>课程名</th>
+            <th>上课时间</th>
+            <th>授课老师</th>
+            <th>学分</th>
+            <th>成绩</th>
+            <th>操作</th>>
+        </tr>
+        <tr v-for="(information,index) in informations">
+            <td>{{ index+1 }}</td>
+            <td>{{ information.number }}</td>
+            <td>{{ information.name }}</td>
+            <td>{{ information.time }}</td>
+            <td>{{ information.teacher }}</td>
+            <td>{{ information.score1 }}</td>
+            <td>{{ information.score2 }}</td>
+            <td><input type="button" value="删除" @click="deleted(information.number)"><td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#main",
+        data:{
+            username:'',
+            informations:[]
+        },
+        mounted(){
+            this.username=localStorage.getItem("username");
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/student/getAll",
+                data: this.username,
+                success: function (value) {
+                    this.informations=value;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(typeof (errorThrown));
+                }
+            });
+        },
+        methods:{
+            deleted(number){
+                const data={
+                    "username":this.username,
+                    "number":number
+                };
+                $.ajax({
+                    type:"delete",
+                    url:"http://localhost:8080/student/delete",
+                    data:data,
+                    success:function (){
+                            alert("删除成功")
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(typeof (errorThrown));
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

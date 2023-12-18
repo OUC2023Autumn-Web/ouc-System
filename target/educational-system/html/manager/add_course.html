@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加课程</title>
+    <script src="../../sources/js/vue.js"></script> <!--vue引入-->
+    <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+</head>
+<body>
+<div id="main">
+    <form>
+        课程名:<input type="text" v-model="course_name">
+        老师:<input type="text" v-model="teacher_name">
+        授课时间:<input type="text" v-model="time">
+        学分:<input type="text" v-model="score">
+        <input type="button" value="提交" @click="sub()">
+    </form>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#main",
+        data:{
+            course_name:"",
+            teacher_name:"",
+            time:"",
+            score:""
+        },
+        methods:{
+            sub(){
+                const data={
+                    "course_name":this.course_name,
+                    "teacher_name":this.teacher_name,
+                    "time":this.time,
+                    "score":this.score
+                };
+                $.ajax({
+                    type: "put",
+                    url: "http://localhost:8080//manager/putcourse",
+                    data: data,
+                    success: function (value) {
+                        alert("成功添加")
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(typeof (errorThrown));
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

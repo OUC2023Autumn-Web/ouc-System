@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选课系统登录入口</title>
+    <script src="./sources/js/vue.js"></script> <!--vue引入-->
+    <script src="./sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        body {
+            background-image: url("./sources/images/login_background.gif");
+        }
+        #login {
+            width: 40%;
+            margin:0 30%;
+            text-align: center;
+            background: rgb(100,197,255,0.1);
+
+        }
+    </style>
+</head>
+<body>
+ <h1 style="text-align: center">选课系统</h1>
+    <br><br><br><br><br><br><br><br>
+    <div id="login">
+        <label style="width: 30%;">
+            <input type="radio" name="search" @click="opset('manager')">
+            管理员
+        </label>
+        <label style="width: 30%;">
+            <input type="radio" name="search" @click="opset('teacher')">
+            教师
+        </label>
+        <label style="width: 30%;">
+            <input type="radio" name="search" @click="opset('student')">
+            学生
+        </label><br><br>
+        <form>
+            用户名  <input type="text" name="user" v-model="username" @focus="s1()" @blur="s3()"><br><br>
+            密码   <input width="20%" name="password" v-bind:type="password_type" v-model="password" @focus="s2()" @blur="s4()"><br><br>
+            <input type="button" value="登录" @click="log_on()">
+        </form>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#login",
+        data:{
+            identity:'',
+            username:'请输入账号',
+            password:'请输入密码',
+            password_type:"text"
+        },
+        methods:{
+            s1(){
+                if(this.username==="请输入账号"){
+                    this.username="";
+                }
+            },
+            s2(){
+                if(this.password==="请输入密码"){
+                    this.password_type="password";
+                    this.password="";
+                }
+            },
+            s3(){
+                if(this.username===""){
+                    this.username="请输入账号";
+                }
+            },
+            s4(){
+                if(this.password===""){
+                    this.password_type="text"
+                    this.password="请输入密码";
+                }
+            },
+            opset(a){
+                this.identity=a;
+            },
+            log_on(){
+                const data = {
+                    "username": this.username,
+                    "password": this.password,
+                    "identity": this.identity
+                };
+                $.ajax({
+                    type: "get",
+                    url: "http://localhost:8080/login",
+                    data: data,
+                    success: function (value) {
+                        if (data.identity === '') {
+                            alert("请选择身份");
+                        } else if (data.username === '请输入账号') {
+                            alert("请输入账号");
+                        } else if (data.password === '请输入密码') {
+                            alert("请输入密码");
+                        } else if (value === 1) {
+                            window.location.href = "html/main-face.html";
+                            localStorage.setItem("username", data.username);
+                            localStorage.setItem("identity", data.identity);
+                        } else {
+                            alert("身份或账号或密码错误");
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(typeof (errorThrown));
+                    }
+                });
+            }
+        }
+    })
+</script>
+</html>
