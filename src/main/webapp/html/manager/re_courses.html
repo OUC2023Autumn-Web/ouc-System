@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程管理</title>
+    <script src="../../sources/js/vue.js"></script> <!--vue引入-->
+    <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+</head>
+<body>
+<div id="main">
+    <input type="button" value="添加课程" @click="add_course()">
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th>序号</th>
+            <th>老师姓名</th>
+            <th>课程名</th>
+            <th>课程号</th>
+            <th>授课时间</th>
+            <th>学分</th>
+            <th>操作</th>>
+        </tr>
+        <tr v-for="(course,index) in courses">
+            <td>{{ index+1 }}</td>
+            <td>{{ course.teacher_name }}</td>
+            <td>{{ information.name }}</td>
+            <td>{{ information.number }}</td>
+            <td>{{ information.time }}</td>
+            <td>{{ information.score }}</td>
+            <td><input type="button" value="删除" @click="deleted(course.teacher_name,course.number)"><td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#main",
+        data:{
+            courses:[],
+            username:""
+        },
+        mounted(){
+            this.username=localStorage.getItem("username");
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8080/manager/getAll",
+                success: function (value) {
+                    this.courses=value;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(typeof (errorThrown));
+                }
+            });
+        },
+        methods:{
+            deleted(name,number){
+                const data={
+                    "number":number,
+                    "teacher_name":name
+                }
+                $.ajax({
+                    type: "deleted",
+                    url: "http://localhost:8080/manager/Deletecourse",
+                    success: function (value) {
+                        alert("操作成功");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(typeof (errorThrown));
+                    }
+                });
+            },
+            add_course(){
+                window.location.href="add_course.html"
+            }
+        }
+    })
+</script>
+</html>

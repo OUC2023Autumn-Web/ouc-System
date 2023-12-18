@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程表</title>
+    <script src="../../sources/js/vue.js"></script> <!--vue引入-->
+    <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+</head>
+<body>
+<div id="main">
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th></th>
+            <th>周一</th>
+            <th>周二</th>
+            <th>周三</th>
+            <th>周四</th>
+            <th>周五</th>
+            <th>周六</th>
+            <th>周天</th>>
+        </tr>
+        <tr v-for="(course,index) in courses">
+            <td>{{ index+1 }}<td>
+            <td>{{course.Monday}}</td>
+            <td>{{course.Tuesday}}</td>
+            <td>{{course.Wednesday}}</td>
+            <td>{{course.Thursday}}</td>
+            <td>{{course.Friday}}</td>
+            <td>{{course.Saturday}}</td>
+            <td>{{course.Sunday}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"main",
+        data:{
+            username:"",
+            courses:[]
+        },
+        mounted(){
+            this.username=localStorage.getItem("username")
+            $.ajax({
+                type:"get",
+                url:"http://localhost:8080/student/getAlltime",
+                data:this.username,
+                success:function (value){
+                    this.courses=value;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(typeof (errorThrown));
+                }
+            })
+        }
+    })
+</script>
+</html>
