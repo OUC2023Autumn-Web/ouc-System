@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>选课系统登录入口</title>
     <script src="./sources/js/vue.js"></script> <!--vue引入-->
     <script src="./sources/js/axios.min.js"></script>  <!--axios引入-->
     <style>
+        @import url(./sources/css/common.css);
         body {
-            background-image: url("./sources/images/login_background.gif");
+
+            background-size: 100%;
+            background-color: #4097d7;
+            background-position: center bottom;
+            background-repeat: repeat-x;
         }
         #login {
             width: 40%;
             margin:0 30%;
             text-align: center;
-            background: rgb(100,197,255,0.1);
+            background: rgb(100,197,255,0.5);
 
         }
     </style>
 </head>
 <body>
+<div style="position:relative; width:100%; height:100vh; display:flex; flex-direction: column;">
  <h1 style="text-align: center">选课系统</h1>
-    <br><br><br><br><br><br><br><br>
-    <div id="login">
-        <label style="width: 30%;">
-            <input type="radio" name="search" @click="opset('manager')">
-            管理员
-        </label>
-        <label style="width: 30%;">
-            <input type="radio" name="search" @click="opset('teacher')">
-            教师
-        </label>
-        <label style="width: 30%;">
-            <input type="radio" name="search" @click="opset('student')">
-            学生
-        </label><br><br>
-        <form>
-            用户名  <input type="text" name="user" v-model="username" @focus="s1()" @blur="s3()"><br><br>
-            密码   <input width="20%" name="password" v-bind:type="password_type" v-model="password" @focus="s2()" @blur="s4()"><br><br>
-            <input type="button" value="登录" @click="log_on()">
-        </form>
+    <div style="position: absolute; top: 50%;transform: translateY(-100%);width: 100%">
+        <div class="header">
+            登录入口
+        </div>
+        <div id="login" style="padding: 10px 0 10px 0">
+            <label style="width: 30%;">
+                <input type="radio" name="search" @click="opset('manager')">
+                管理员
+            </label>
+            <label style="width: 30%;">
+                <input type="radio" name="search" @click="opset('teacher')">
+                教师
+            </label>
+            <label style="width: 30%;">
+                <input type="radio" name="search" @click="opset('student')">
+                学生
+            </label><br><br>
+            <form>
+                用户名  <input type="text" name="user" v-model="username" @focus="s1()" @blur="s3()"><br><br>
+                密码   <input width="20%" name="password" v-bind:type="password_type" v-model="password" @focus="s2()" @blur="s4()"><br><br>
+                <input class="common_button" type="button" value="登录" @click="log_on()">
+            </form>
+        </div>
     </div>
+</div>
 </body>
 <script>
-    new Vue({
+    var pic = [];
+    pic[0]="./sources/images/login_bg1.png"
+    pic[1]="./sources/images/login_bg2.png"
+    pic[2]="./sources/images/login_bg3.png"
+    pic[3]="./sources/images/login_bg4.png"
+    var choose = Math.round(Math.random() * 3);
+    document.write('<style>body{background-image:url(' + pic[choose] + ')}</style>');
+</script>
+<script>
+new Vue({
         el:"#login",
         data:{
             identity:'',
@@ -107,6 +127,8 @@
                 });
             }
         }
-    })
+
+    }
+    )
 </script>
 </html>
