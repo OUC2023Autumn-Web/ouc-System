@@ -21,31 +21,36 @@ import java.util.Map;
 public class StudentController {
     @Autowired
     public IStudentServiceImpl studentService;
-    @GetMapping("/findAll")
+    //@GetMapping("/findAll")
+    @RequestMapping(value = "/findAll",method = RequestMethod.GET)
     public ArrayList<StuInstance1> findAll(String username){
         log.info("查询学生学过的所有课程");
         ArrayList<StuInstance1> courses = studentService.findAll(username);
         return courses;
     }
-    @GetMapping("/getsome")
+    //@GetMapping("/getsome")
+    @RequestMapping(value = "/getsome",method = RequestMethod.GET)
     public ArrayList<Course> getSome(String name){
         log.info("查询可选课程");
         ArrayList<Course> courses = studentService.getSome(name);
         return  courses;
     }
-    @DeleteMapping("/delete")
+    //@DeleteMapping("/delete")
+    @RequestMapping("/delete")
     public void deleteCourse(@RequestBody StuInstance3 body){
         log.info("删除学生对应的课程");
         studentService.deleteCourse(body.username, body.number);
         log.info("删除成功");
     }
-    @PutMapping("/put")
+    //@PutMapping("/put")
+    @RequestMapping(value = "/put",method = RequestMethod.PUT)
     public Integer putCourse(@RequestBody StuInstance3 body){
         log.info("添加课程");
         int t = studentService.putCourse(body.username,body.number);
         return t;
     }
-    @GetMapping("/getAlltime")
+    //@GetMapping("/getAlltime")
+    @RequestMapping(value = "/getAlltime",method = RequestMethod.GET)
     public StuInstance2[] getAlltime(String username){
         log.info("课程表");
         StuInstance2[] arr = new StuInstance2[12];

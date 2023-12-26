@@ -11,23 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Map;
 
-/**
- * @author Mango
- * @date 2022/12/05 21:25
- */
 @Slf4j
 @RestController
 @RequestMapping("/teacher")
 public class TeacherController {
     @Autowired
     public ITeacherServiceImpl teacherService;
-    @GetMapping("/getAll")
+    //@GetMapping("/getAll")
+    @RequestMapping(value = "/getAll",method = RequestMethod.GET)
     public ArrayList<Course> getAll(String username){
         log.info("查询老师教授的课程");
         ArrayList<Course> courses = teacherService.findAll(username);
         return courses;
     }
-    @GetMapping("/getstudent")
+    //@GetMapping("/getstudent")
+    @RequestMapping(value = "/getstudent",method = RequestMethod.GET)
     public ArrayList<TeaInstance1> getStudent(@RequestBody Map<String,String> body){
         log.info("学生对课程修读情况");
         String username = null;
@@ -40,13 +38,15 @@ public class TeacherController {
         ArrayList<TeaInstance1> arrayList = teacherService.getStudent(username, time);
         return arrayList;
     }
-    @GetMapping("/getstudent")
+    //@GetMapping("/getscore")
+    @RequestMapping(value = "/getscore",method = RequestMethod.GET)
     public ArrayList<Student> getStudent(@RequestBody TeaInstance2 body){
         log.info("课程评分");
         ArrayList<Student> arrayList = teacherService.getStudent2(body.username, body.time);
         return arrayList;
     }
-    @PutMapping("/setscore")
+    //@PutMapping("/setscore")
+    @RequestMapping(value = "/setscore",method = RequestMethod.PUT)
     public void setscore(@RequestBody TeaInstance3 body){
         log.info("课程评分");
         teacherService.setscore(body);

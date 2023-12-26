@@ -15,19 +15,22 @@ public class Administrator {
     @Autowired
     public IAdministratorServiceImpl administratorService;
 
-    @GetMapping("/getAll")
+    //@GetMapping("/getAll")
+    @RequestMapping(value = "/getAll",method = RequestMethod.GET)
     public ArrayList<Course> getAll(){
         log.info("已有课程预览");
         return administratorService.getAll();
     }
 
-    @PutMapping("/putcourse")
+    //@PutMapping("/putcourse")
+    @RequestMapping(value = "/putcourse",method = RequestMethod.PUT)
     public void putcourse(@RequestBody Course course){
         log.info("添加课程");
         administratorService.putcourse(course);
     }
 
-    @DeleteMapping("/Deletecourse")
+    //@DeleteMapping("/Deletecourse")
+    @RequestMapping("/Deletecourse")
     public void deletecourse(@RequestBody Course course){
         log.info("删除课程");
         administratorService.deletecourse(course);

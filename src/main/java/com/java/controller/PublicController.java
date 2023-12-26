@@ -13,17 +13,20 @@ import java.util.ArrayList;
 public class PublicController {
     @Autowired
     public IUserService userService;
-    @PutMapping("/repassword")
+    //@PutMapping("/repassword")
+    @RequestMapping(value = "/repassword",method = RequestMethod.PUT)
     public void repassword(@RequestBody User user){
         log.info("修改密码");
         userService.repassword(user);
     }
-    @GetMapping("/information")
+    //@GetMapping("/information")
+    @RequestMapping(value = "/information",method = RequestMethod.GET)
     public ArrayList<User> getinformation(@RequestBody User user){
         log.info("获得个人信息");
         return userService.getinformation(user);
     }
-    @PutMapping("/information")
+    //@PutMapping("/information")
+    @RequestMapping(value = "/information",method = RequestMethod.PUT)
     public void setinformation(@RequestBody User user){
         log.info("/修改个人信息");
         userService.setinformation(user);

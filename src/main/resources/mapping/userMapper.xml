@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.javen.dao.UserDao">
+<mapper namespace="com.java.dao.UserDao">
     <!-- 登录-->
-    <select id="login" resultType="java.lang.Integer" parameterType="com.javen.model.User">
+    <select id="login" resultType="java.lang.Integer" parameterType="com.java.model.User">
         select count(*)
         from user
         where username = #{username}
@@ -12,7 +12,7 @@
           and identity = #{identity}
     </select>
     <!-- 查询id-->
-    <select id="selectId" resultType="java.lang.Integer" parameterType="com.javen.model.User">
+    <select id="selectId" resultType="java.lang.Integer" parameterType="com.java.model.User">
         select id
         from user
         where username = #{username}
@@ -20,13 +20,13 @@
           and identity = #{identity}
     </select>
     <!-- 修改密码-->
-    <update id="updatePassword" parameterType="com.javen.model.User">
+    <update id="updatePassword" parameterType="com.java.model.User">
         update user
         set password=#{password}
         where id = #{id}
     </update>
     <!-- 账号密码重置-->
-    <update id="reset" parameterType="com.javen.model.User">
+    <update id="reset" parameterType="com.java.model.User">
         update user
         set password=#{password},
             username = #{username}
