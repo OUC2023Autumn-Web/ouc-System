@@ -6,6 +6,9 @@
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
+<style>
+    @import url(../../sources/css/common.css);
+</style>
 <body>
 <div id="main">
     <table border="1px" cellspacing="0">
@@ -27,7 +30,7 @@
             <td>{{ information.teacher }}</td>
             <td>{{ information.score1 }}</td>
             <td>{{ information.score2 }}</td>
-            <td><input type="button" value="删除" @click="deleted(information.number)"><td>
+            <td><input class="common_button"  type="button" value="删除" @click="deleted(information.number)"><td>
         </tr>
     </table>
 </div>

@@ -6,29 +6,37 @@
     <script src="../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
-<body>
+<style>
+    @import url(../sources/css/common.css);
+</style>
+<body style="background: #4097d7;">
+<h1 style="text-align: center;color: white">教务选课系统</h1>
 <div id="main">
-    <div>欢迎使用选课系统，</div> {{username}}  <input type="button" value="登出" @click="exit()">
+    <div style="background: #084CA2;margin: 5px 0;font-weight: bolder;color: white"><marquee>欢迎使用选课系统！</marquee></div>
+    <div style="position:absolute;top:0;right:0;"> {{username}}  <input class="common_button" type="button" value="登出" @click="exit()"></div>
 
     <!--    左侧导航栏-->
-    <div>
+    <div style="float:left;width:15%;">
+        <!--identity==='student'-->
         <div v-if="identity==='student'">
-            <input type="button" value="选课结果查询" @click="student1()">
-            <input type="button" value="选课" @click="student2()">
-            <input type="button" value="课程表" @click="student3()">
+            <input class="left_button" type="button" value="选课结果查询" @click="student1()">
+            <input class="left_button" type="button" value="选课" @click="student2()">
+            <input class="left_button" type="button" value="课程表" @click="student3()">
         </div>
+        <!--identity==='teacher'-->
         <div v-if="identity==='teacher'">
-            <input type="button" value="课程预览" @click="teacher1()">
-            <input type="button" value="课程评分" @click="teacher2()">
+            <input class="left_button" type="button" value="课程预览" @click="teacher1()">
+            <input class="left_button" type="button" value="课程评分" @click="teacher2()">
         </div>
+        <!--identity==='manager'-->
         <div v-if="identity==='manager'">
-            <input type="button" value="课程管理" @click="manager()">
+            <input class="left_button" type="button" value="课程管理" @click="manager()">
         </div>
-        <input type="button" value="个人信息" @click="public1()">
-        <input type="button" value="修改密码" @click="public2()">
+        <input class="left_button" type="button" value="个人信息" @click="public1()">
+        <input class="left_button" type="button" value="修改密码" @click="public2()">
     </div>
     <!--    右侧子窗口-->
-    <iframe src="" v-bind:src="src"></iframe>
+    <iframe style="margin:0 0 5px 0;float:right;width:83%;height:83vh;border: solid white 1px;background: rgba(255,255,255,0.5)" src="" v-bind:src="src"></iframe>
 
 </div>
 </body>

@@ -6,10 +6,13 @@
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
+<style>
+    @import url(../../sources/css/common.css);
+</style>
 <body>
 <div id="main">
     课程名:<input type="text" v-model="course_name">
-    <input type="button" value="查询" @click="searchs()">
+    <input class="common_button" type="button" value="查询" @click="searchs()">
     <table border="1px" cellspacing="0">
         <tr>
             <th>序号</th>
@@ -27,7 +30,7 @@
             <td>{{ course.time }}</td>
             <td>{{ course.teacher }}</td>
             <td>{{ course.score }}</td>
-            <td><input type="button" value="添加" @click="add(course.number)"><td>
+            <td><input class="common_button"  type="button" value="添加" @click="add(course.number)"><td>
         </tr>
     </table>
 </div>

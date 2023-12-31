@@ -6,6 +6,9 @@
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
+<style>
+    @import url(../../sources/css/common.css);
+</style>
 <body>
 <div id="main">
     <table border="1px" cellspacing="0">
@@ -20,7 +23,7 @@
             <th>周天</th>>
         </tr>
         <tr v-for="(course,index) in courses">
-            <td>{{ index+1 }}<td>
+            <td>{{ index+1 }}</td>
             <td>{{course.Monday}}</td>
             <td>{{course.Tuesday}}</td>
             <td>{{course.Wednesday}}</td>

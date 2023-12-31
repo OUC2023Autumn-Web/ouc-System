@@ -6,6 +6,9 @@
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
+<style>
+    @import url(../../sources/css/common.css);
+</style>
 <body>
 <div id="main">
     <form>
@@ -13,7 +16,7 @@
         老师:<input type="text" v-model="teacher_name">
         授课时间:<input type="text" v-model="time">
         学分:<input type="text" v-model="score">
-        <input type="button" value="提交" @click="sub()">
+        <input class="common_button"  type="button" value="提交" @click="sub()">
     </form>
 </div>
 </body>

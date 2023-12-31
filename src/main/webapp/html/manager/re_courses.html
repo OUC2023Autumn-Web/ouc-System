@@ -6,9 +6,12 @@
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
+<style>
+    @import url(../../sources/css/common.css);
+</style>
 <body>
 <div id="main">
-    <input type="button" value="添加课程" @click="add_course()">
+    <input class="common_button"  type="button" value="添加课程" @click="add_course()">
     <table border="1px" cellspacing="0">
         <tr>
             <th>序号</th>

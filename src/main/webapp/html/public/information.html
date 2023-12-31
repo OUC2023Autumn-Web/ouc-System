@@ -6,13 +6,16 @@
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
 </head>
+<style>
+    @import url(../../sources/css/common.css);
+</style>
 <body>
 <div id="main">
-    identity:{{ identity }}
-    username:<input type="text" v-model="username">
-    college:<input type="text" v-model="college">
-    Phone:<input type="text" v-model="Phone">
-    <input type="button" value="提交修改" @click="sub()">
+    身份:{{ identity }}<br />
+    用户名:<input type="text" v-model="username"><br />
+    学院:<input type="text" v-model="college"><br />
+    电话:<input type="text" v-model="Phone"><br />
+    <input class="common_button" type="button" value="提交修改" @click="sub()">
 </div>
 </body>
 <script>
