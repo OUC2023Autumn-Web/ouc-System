@@ -19,7 +19,7 @@ public class LoginController {
     //@GetMapping ("/login")
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public Integer login(@RequestBody LogInstance body){
-
+        log.info("登录请求");
        return userService.login(body.username,body.identity,body.password);
     }
 }
