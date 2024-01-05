@@ -17,9 +17,10 @@ public class LoginController {
     @Autowired
     public IUserService userService;
     //@GetMapping ("/login")
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Integer login(@RequestBody LogInstance body){
         log.info("登录请求");
-       return userService.login(body.username,body.identity,body.password);
+        //return 1;
+        return userService.login(body.username,body.identity,body.password);
     }
 }

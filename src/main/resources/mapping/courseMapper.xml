@@ -11,7 +11,7 @@
     <!--    查询选课状态-->
     <select id="findSelect" parameterType="java.lang.Integer" resultType="com.java.model.Course">
         select *
-        from student_course
+        from sc
         where s_id = #{id};
     </select>
     <!--      按姓名查找课程-->

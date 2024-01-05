@@ -35,6 +35,7 @@
     </table>
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
         el:"#main",
@@ -45,15 +46,30 @@
         },
         mounted(){
           this.username=localStorage.getItem("username");
+            var that=this;
+            $.ajax({
+                type:"get",
+                url:"http://localhost:8080/student/getSome",
+                data:{"name":"all"},
+                dataType:"json",
+                success: function(value){
+                    that.courses=value
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(typeof (errorThrown));
+                }
+            })
         },
         methods:{
             searchs(){
+                var that=this;
                 $.ajax({
                     type:"get",
                     url:"http://localhost:8080/student/getSome",
-                    data:this.course_name,
+                    data:{"name":this.course_name},
+                    dataType:"json",
                     success: function(value){
-                        this.courses=value
+                        that.courses=value
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(typeof (errorThrown));
@@ -68,10 +84,14 @@
                 $.ajax({
                     type:"put",
                     url:"http://localhost:8080/student/put",
-                    data: data,
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify(data),
                     success: function(value){
                         if(value===0){
                             alert("失败")
+                        }
+                        else{
+                            alert("成功")
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {

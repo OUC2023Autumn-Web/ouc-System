@@ -20,6 +20,7 @@
     </form>
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
         el:"#main",
@@ -40,7 +41,8 @@
                 $.ajax({
                     type: "put",
                     url: "http://localhost:8080//manager/putcourse",
-                    data: data,
+                    data:data,
+                    dataType:"json",
                     success: function (value) {
                         alert("成功添加")
                     },

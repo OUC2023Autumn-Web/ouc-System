@@ -1,5 +1,6 @@
 package com.java.service;
 
+import com.java.model.Login.LogInstance;
 import com.java.model.User;
 
 import java.util.ArrayList;

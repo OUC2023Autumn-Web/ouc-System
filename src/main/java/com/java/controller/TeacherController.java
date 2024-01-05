@@ -25,7 +25,7 @@ public class TeacherController {
         return courses;
     }
     //@GetMapping("/getstudent")
-    @RequestMapping(value = "/getstudent",method = RequestMethod.GET)
+    @RequestMapping(value = "/getstudent",method = RequestMethod.POST)
     public ArrayList<TeaInstance1> getStudent(@RequestBody Map<String,String> body){
         log.info("学生对课程修读情况");
         String username = null;

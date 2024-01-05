@@ -24,6 +24,7 @@
     </table>
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
         el:"#main",
@@ -33,12 +34,14 @@
         },
         mounted(){
             this.username=localStorage.getItem("username")
+            var that=this;
             $.ajax({
                 type:"get",
                 url:"http://localhost:8080/teacher/getAll",
-                data:this.username,
+                data:{"username":this.username},
+                dataType:"json",
                 success:function (value){
-                    this.courses=value;
+                    that.courses=value;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(typeof (errorThrown));

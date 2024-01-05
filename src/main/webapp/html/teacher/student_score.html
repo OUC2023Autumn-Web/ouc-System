@@ -27,6 +27,7 @@
     <input type="button" value="提交" @click="submits()">
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
         el:"#text",
@@ -41,16 +42,18 @@
             this.time=localStorage.getItem("time");
             this.course_name=localStorage.getItem("course_name");
             this.username=localStorage.getItem("username");
+            var that=this;
             const data={
                 "username":this.username,
                 "time":this.time
             };
             $.ajax({
-                type:"get",
+                type:"post",
                 url:"http://localhost:8080/teacher/getstudent",
-                data:data,
+                contentType: "application/json; charset=utf-8",
+                data:JSON.stringify(data),
                 success:function (value){
-                    this.students=value;
+                    that.students=value;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(typeof (errorThrown));
@@ -70,7 +73,8 @@
                 $.ajax({
                     type:"put",
                     url:"http://localhost:8080/teacher/setscore",
-                    data:data,
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify(data),
                     success:function (){
                         window.location.href="./do_score.html";
                     },

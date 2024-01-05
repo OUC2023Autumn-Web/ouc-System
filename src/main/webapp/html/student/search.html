@@ -35,6 +35,7 @@
     </table>
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
         el:"#main",
@@ -44,20 +45,11 @@
         },
         mounted(){
             this.username=localStorage.getItem("username");
-            $.ajax({
-                type: "get",
-                url: "http://localhost:8080/student/getAll",
-                data: this.username,
-                success: function (value) {
-                    this.informations=value;
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert(typeof (errorThrown));
-                }
-            });
+            this.search();
         },
         methods:{
             deleted(number){
+                var that=this;
                 const data={
                     "username":this.username,
                     "number":number
@@ -65,14 +57,30 @@
                 $.ajax({
                     type:"delete",
                     url:"http://localhost:8080/student/delete",
-                    data:data,
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify(data),
                     success:function (){
-                            alert("删除成功")
+                            alert("删除成功");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("删除失败");
+                    }
+                })
+            },
+            search(){
+                var that=this;
+                $.ajax({
+                    type: "get",
+                    url: "http://localhost:8080/student/getAll",
+                    data: {"username":this.username},
+                    dataType:"json",
+                    success: function (value) {
+                        that.informations=value;
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(typeof (errorThrown));
                     }
-                })
+                });
             }
         }
     })

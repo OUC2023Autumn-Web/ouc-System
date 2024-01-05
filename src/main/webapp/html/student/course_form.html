@@ -23,33 +23,36 @@
             <th>周天</th>>
         </tr>
         <tr v-for="(course,index) in courses">
-            <td>{{ index+1 }}</td>
+            <td>{{index+1}}</td>
             <td>{{course.Monday}}</td>
             <td>{{course.Tuesday}}</td>
             <td>{{course.Wednesday}}</td>
             <td>{{course.Thursday}}</td>
             <td>{{course.Friday}}</td>
             <td>{{course.Saturday}}</td>
-            <td>{{course.Sunday}}</td>
+            <td>{{course.Sunday}}</td>>
         </tr>
     </table>
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
-        el:"main",
+        el:"#main",
         data:{
             username:"",
             courses:[]
         },
         mounted(){
             this.username=localStorage.getItem("username")
+            var that=this;
             $.ajax({
                 type:"get",
                 url:"http://localhost:8080/student/getAlltime",
-                data:this.username,
+                data:{"username":this.username},
+                dataType:"json",
                 success:function (value){
-                    this.courses=value;
+                    that.courses=value;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(typeof (errorThrown));

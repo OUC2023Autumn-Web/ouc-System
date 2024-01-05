@@ -1,7 +1,7 @@
 package com.java.model;
 
 public enum dayEnum {
-    Mondey,
+    Monday,
     Tuesday,
     Wednesday,
     Thursday,

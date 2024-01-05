@@ -103,16 +103,11 @@ new Vue({
                     "password": this.password,
                     "identity": this.identity
                 };
-                var jsonData = {
-                    username: this.username,
-                    password: this.password,
-                    identity: this.identity
-                };
                 $.ajax({
-                    type: "get",
+                    type: "POST",
                     url: "http://localhost:8080/login",
-                    contentType: "application/json; charset=utf-8"
-                    data: JSON.stringify(jsonData),
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify(data),
                     success: function (value) {
                         if (data.identity === '') {
                             alert("请选择身份");
@@ -130,6 +125,7 @@ new Vue({
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(typeof (errorThrown));
+                        alert("typeof (errorThrown)");
                     }
                 });
             }

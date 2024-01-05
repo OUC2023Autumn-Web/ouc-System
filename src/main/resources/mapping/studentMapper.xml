@@ -4,9 +4,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.java.dao.StudentDao">
     <!--    查询所有-->
-    <select id="findAll" resultType="com.java.model.Student">
-        select *
-        from student;
+    <select id="findAll" parameterType="com.java.model.Student" resultType="com.java.model.StudentInstances.StuInstance1">
+        select number,name,time,teacher,score1,score2
+        from sc
+        where username = #{number}
+    </select>
+
+    <select id="getAll" resultType="com.java.model.Course">
+        select number,name,time,teacher,score
+        from course
+    </select>
+
+    <select id="getSome" parameterType="com.java.model.Course" resultType="com.java.model.Course">
+        select number,name,time,teacher,score
+        from course
+        where number = #{number}
+        or name = #{name}
+    </select>
+
+    <select id="delete" parameterType="com.java.model.StudentInstances.StuInstance3" >
+        delete
+        from sc
+        where username=#{username}
+        and number=#{number}
+    </select>
+
+    <select id="putCourse" parameterType="com.java.model.StudentInstances.StuInstance3" >
+        insert into sc (username,number,name,time,teacher,score1,score2)
+        values (#{username}, #{number},(select name from course where number = #{number}),(select time from course where number = #{number}),(select teacher from course where number = #{number}),(select score from course where number = #{number}), NULL);
+    </select>
+
+    <select id="getALLtime" parameterType="com.java.model.StudentInstances.StuInstance3" resultType="com.java.model.StudentInstances.StuInstance1">
+        select number,name,time
+        from sc
+        where username = #{username}
     </select>
     <!--      按姓名查找学生-->
     <select id="findByName" parameterType="com.java.model.Student" resultType="com.java.model.Student">

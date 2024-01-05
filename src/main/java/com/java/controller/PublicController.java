@@ -20,13 +20,13 @@ public class PublicController {
         userService.repassword(user);
     }
     //@GetMapping("/information")
-    @RequestMapping(value = "/information",method = RequestMethod.GET)
+    @RequestMapping(value = "/get_information",method = RequestMethod.POST)
     public ArrayList<User> getinformation(@RequestBody User user){
         log.info("获得个人信息");
         return userService.getinformation(user);
     }
     //@PutMapping("/information")
-    @RequestMapping(value = "/information",method = RequestMethod.PUT)
+    @RequestMapping(value = "/re_information",method = RequestMethod.PUT)
     public void setinformation(@RequestBody User user){
         log.info("/修改个人信息");
         userService.setinformation(user);

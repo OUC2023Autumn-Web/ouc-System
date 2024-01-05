@@ -15,9 +15,12 @@ public interface IStudentService {
 
     ArrayList<Course> getSome(String name);
 
+    ArrayList<Course> getAll();
+
     void deleteCourse(String username, String number);
 
     int putCourse(String username, String number);
 
-    void getALLtime(StuInstance2[] arr, String username);
+
+    StuInstance2[] getALLtime(String username);
 }

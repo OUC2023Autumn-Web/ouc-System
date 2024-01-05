@@ -18,6 +18,7 @@
     <input class="common_button" type="button" value="提交修改" @click="sub()">
 </div>
 </body>
+<script src="../../sources/js/jquery.js"></script>
 <script>
     new Vue({
         el:"#main",
@@ -28,19 +29,21 @@
             Phone:""
         },
         mounted(){
+            var that=this;
             const data={
                 "username":localStorage.getItem("username"),
                 "identity":localStorage.getItem("identity")
             };
             $.ajax({
-                type: "get",
-                url: "http://localhost:8080/information",
-                data: data,
+                type: "post",
+                url: "http://localhost:8080/get_information",
+                contentType: "application/json; charset=utf-8",
+                data:JSON.stringify(data),
                 success: function (value) {
-                    this.identity=value.identity
-                    this.username=value.username
-                    this.college=value.college
-                    this.Phone=value.Phone
+                    that.identity=value.identity
+                    that.username=value.username
+                    that.college=value.college
+                    that.Phone=value.Phone
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(typeof (errorThrown));
@@ -57,8 +60,9 @@
                 };
                 $.ajax({
                     type: "put",
-                    url: "http://localhost:8080/reinformation",
-                    data: data,
+                    url: "http://localhost:8080/re_information",
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify(data),
                     success: function (value) {
                         alert("修改成功");
                     },

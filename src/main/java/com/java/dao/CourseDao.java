@@ -1,5 +1,11 @@
 package com.java.dao;
 
+import com.java.model.Course;
+import com.java.model.Student;
+import com.java.model.StudentInstances.StuInstance1;
+
+import java.util.ArrayList;
+
 /**
  * @author Mango
  * @date 2022/12/05 21:55
@@ -10,5 +16,4 @@ public interface CourseDao {
      *
      * @return 课程列表
      */
-
 }
