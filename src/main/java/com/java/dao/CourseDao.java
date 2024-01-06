@@ -11,6 +11,11 @@ import java.util.ArrayList;
  * @date 2022/12/05 21:55
  */
 public interface CourseDao {
+    ArrayList<Course> getAll();
+
+    void deletecourse(Course course);
+
+    void putcourse(Course course);
     /**
      * 查询所有课程
      *

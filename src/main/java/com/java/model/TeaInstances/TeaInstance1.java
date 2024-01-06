@@ -1,7 +1,7 @@
 package com.java.model.TeaInstances;
 
 public class TeaInstance1 {
-    String name;
-    String number;
-    String state;
+    public String studentname;
+    public String username;
+    public String state;
 }

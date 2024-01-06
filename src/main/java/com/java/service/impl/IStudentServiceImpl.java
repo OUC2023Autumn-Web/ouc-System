@@ -23,8 +23,6 @@ public class IStudentServiceImpl implements IStudentService {
 
     @Autowired
     private StudentDao studentDao;
-    @Autowired
-    private CourseDao courseDao;
     @Override
     public ArrayList<StuInstance1> findAll(String username) {
         Student stu = new Student();
@@ -100,6 +98,12 @@ public class IStudentServiceImpl implements IStudentService {
             }
             if(time.charAt(0)=='九'){
                 x=8;
+            }
+            if(time.charAt(0)=='十' && time.charAt(0)=='十'){
+                x=9;
+            }
+            if(time.charAt(0)=='十' && time.charAt(0)=='一'){
+                x=10;
             }
             y=x+1;
             char week = arr1.get(i).getTime().charAt(1);

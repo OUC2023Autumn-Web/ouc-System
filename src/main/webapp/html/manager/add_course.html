@@ -12,8 +12,8 @@
 <body>
 <div id="main">
     <form>
-        课程名:<input type="text" v-model="course_name">
-        老师:<input type="text" v-model="teacher_name">
+        课程名:<input type="text" v-model="name">
+        老师:<input type="text" v-model="teacher">
         授课时间:<input type="text" v-model="time">
         学分:<input type="text" v-model="score">
         <input class="common_button"  type="button" value="提交" @click="sub()">
@@ -25,24 +25,24 @@
     new Vue({
         el:"#main",
         data:{
-            course_name:"",
-            teacher_name:"",
+            name:"",
+            teacher:"",
             time:"",
             score:""
         },
         methods:{
             sub(){
                 const data={
-                    "course_name":this.course_name,
-                    "teacher_name":this.teacher_name,
+                    "name":this.name,
+                    "teacher":this.teacher,
                     "time":this.time,
                     "score":this.score
                 };
                 $.ajax({
                     type: "put",
-                    url: "http://localhost:8080//manager/putcourse",
-                    data:data,
-                    dataType:"json",
+                    url: "http://localhost:8080/managers/putcourse",
+                    contentType: "application/json; charset=utf-8",
+                    data:JSON.stringify(data),
                     success: function (value) {
                         alert("成功添加")
                     },

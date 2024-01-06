@@ -4,9 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.java.dao.TeacherDao">
     <!--    查询所有-->
-    <select id="findAll" resultType="com.java.model.Teacher">
-        select *
-        from teacher;
+    <select id="findAll" parameterType="com.java.model.Teacher" resultType="com.java.model.Course" >
+        select number,name,time
+        from course
+        where username=#{username};
+    </select>
+
+    <select id="getStudent" parameterType="com.java.model.Course" resultType="com.java.model.TeaInstances.TeaInstance1" >
+        select studentname,username,state
+        from sc
+        where teachernumber=#{teacher}
+            and time=#{time}
+    </select>
+
+    <select id="setscore" parameterType="com.java.model.TeaInstances.TeaInstance4"  >
+        update sc
+        set score2 = #{score}
+        where name=#{course_name}
+            and username = #{username}
     </select>
     <!--      按姓名查找老师-->
     <select id="findByName" parameterType="com.java.model.Teacher" resultType="com.java.model.Teacher">

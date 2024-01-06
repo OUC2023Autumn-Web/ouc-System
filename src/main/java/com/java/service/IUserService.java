@@ -14,7 +14,7 @@ public interface IUserService {
 
     void repassword(User user);
 
-    ArrayList<User> getinformation(User user);
+    User getinformation(User user);
 
     void setinformation(User user);
 }

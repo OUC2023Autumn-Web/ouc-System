@@ -11,6 +11,27 @@
           and password = #{password}
           and identity = #{identity}
     </select>
+
+    <select id="repassword"  parameterType="com.java.model.Login.LogInstance">
+        update user
+        set password = #{password}
+        where username = #{username}
+            and identity = #{identity}
+    </select>
+
+    <select id="getinformation"  resultType="com.java.model.User" parameterType="com.java.model.User">
+        select identity,username,college,phone
+        from users
+        where username = #{username}
+          and identity = #{identity}
+    </select>
+
+    <select id="setinformation"   parameterType="com.java.model.User">
+        update users
+        set phone = #{phone}
+        where username = #{username}
+          and identity = #{identity}
+    </select>
     <!-- 查询id-->
     <select id="selectId" resultType="java.lang.Integer" parameterType="com.java.model.User">
         select id

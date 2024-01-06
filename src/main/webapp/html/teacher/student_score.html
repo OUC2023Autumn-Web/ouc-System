@@ -19,8 +19,8 @@
         </tr>
         <tr v-for="(student,index) in students">
             <td>{{ index+1 }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.number }}</td>
+            <td>{{ student.studentname }}</td>
+            <td>{{ student.username }}</td>
             <td><input type="text" v-model="score[index]"></td>
         </tr>
     </table>
@@ -62,7 +62,7 @@
         },
         methods:{
             return1(){
-                window.location.href="./search.html"
+                window.location.href="./do_score.html"
             },
             submits(){
                 const data={

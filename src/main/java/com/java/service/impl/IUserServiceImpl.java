@@ -31,17 +31,20 @@ public class IUserServiceImpl implements IUserService {
 
     @Override
     public void repassword(User user) {
-
+        LogInstance logs = new LogInstance();
+        logs.identity=user.identity;
+        logs.username=user.username;
+        logs.password=user.new_password;
+        loginDao.repassword(logs);
     }
 
     @Override
-    public ArrayList<User> getinformation(User user) {
-
-        return null;
+    public User getinformation(User user) {
+        return loginDao.getinformation(user);
     }
 
     @Override
     public void setinformation(User user) {
-
+        loginDao.setinformation(user);
     }
 }

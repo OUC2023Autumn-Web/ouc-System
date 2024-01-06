@@ -12,9 +12,9 @@
 <body>
 <div id="main">
     身份:{{ identity }}<br />
-    用户名:<input type="text" v-model="username"><br />
-    学院:<input type="text" v-model="college"><br />
-    电话:<input type="text" v-model="Phone"><br />
+    用户名:<input type="text" v-model="username" disabled><br />
+    学院:<input type="text" v-model="college" disabled><br />
+    电话:<input type="text" v-model="phone"><br />
     <input class="common_button" type="button" value="提交修改" @click="sub()">
 </div>
 </body>
@@ -26,7 +26,7 @@
             identity:"",
 			username:"",
 			college:"",
-            Phone:""
+            phone:""
         },
         mounted(){
             var that=this;
@@ -43,7 +43,7 @@
                     that.identity=value.identity
                     that.username=value.username
                     that.college=value.college
-                    that.Phone=value.Phone
+                    that.phone=value.phone
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(typeof (errorThrown));
@@ -56,7 +56,7 @@
                     "identity":this.identity,
                     "username":this.username,
                     "college":this.college,
-                    "Phone":this.Phone
+                    "phone":this.phone
                 };
                 $.ajax({
                     type: "put",

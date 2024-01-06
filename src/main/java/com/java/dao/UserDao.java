@@ -14,7 +14,9 @@ public interface UserDao {
      * @return 查询数据条数
      */
     Integer login(LogInstance log);
-
+    void repassword(LogInstance logs);
+    User getinformation(User user);
+    void setinformation(User user);
     /**
      * 查询id
      *

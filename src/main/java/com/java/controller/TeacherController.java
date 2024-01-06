@@ -28,13 +28,9 @@ public class TeacherController {
     @RequestMapping(value = "/getstudent",method = RequestMethod.POST)
     public ArrayList<TeaInstance1> getStudent(@RequestBody Map<String,String> body){
         log.info("学生对课程修读情况");
-        String username = null;
-        String time = null;
         /*实际上map集合中只有一个对象*/
-        for (Map.Entry<String, String> entry : body.entrySet()) {
-            username = entry.getKey();
-            time = entry.getValue();
-        }
+        String username=body.get("username");
+        String time=body.get("time");
         ArrayList<TeaInstance1> arrayList = teacherService.getStudent(username, time);
         return arrayList;
     }
@@ -49,7 +45,7 @@ public class TeacherController {
     @RequestMapping(value = "/setscore",method = RequestMethod.PUT)
     public void setscore(@RequestBody TeaInstance3 body){
         log.info("课程评分");
+        System.out.print(body.course_name+body.students.get(0).username+body.score.get(0));
         teacherService.setscore(body);
-
     }
 }

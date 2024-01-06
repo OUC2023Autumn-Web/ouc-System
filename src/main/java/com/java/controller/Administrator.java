@@ -1,6 +1,7 @@
 package com.java.controller;
 
 import com.java.model.Course;
+import com.java.service.IUserService;
 import com.java.service.impl.IAdministratorServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 @Slf4j
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/managers")
 public class Administrator {
     @Autowired
     public IAdministratorServiceImpl administratorService;
@@ -30,7 +31,7 @@ public class Administrator {
     }
 
     //@DeleteMapping("/Deletecourse")
-    @RequestMapping("/Deletecourse")
+    @RequestMapping(value = "/Deletecourse",method = RequestMethod.DELETE)
     public void deletecourse(@RequestBody Course course){
         log.info("删除课程");
         administratorService.deletecourse(course);

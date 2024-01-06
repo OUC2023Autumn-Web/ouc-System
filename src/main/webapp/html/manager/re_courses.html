@@ -24,12 +24,12 @@
         </tr>
         <tr v-for="(course,index) in courses">
             <td>{{ index+1 }}</td>
-            <td>{{ course.teacher_name }}</td>
-            <td>{{ information.name }}</td>
-            <td>{{ information.number }}</td>
-            <td>{{ information.time }}</td>
-            <td>{{ information.score }}</td>
-            <td><input type="button" value="删除" @click="deleted(course.teacher_name,course.number)"><td>
+            <td>{{ course.teacher }}</td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.number }}</td>
+            <td>{{ course.time }}</td>
+            <td>{{ course.score }}</td>
+            <td><input type="button" value="删除" @click="deleted(course.teacher,course.number)"><td>
         </tr>
     </table>
 </div>
@@ -47,7 +47,7 @@
             var that=this;
             $.ajax({
                 type: "get",
-                url: "http://localhost:8080/manager/getAll",
+                url: "http://localhost:8080/managers/getAll",
                 success: function (value) {
                     that.courses=value;
                 },
@@ -60,11 +60,11 @@
             deleted(name,number){
                 const data={
                     "number":number,
-                    "teacher_name":name
+                    "teacher":name
                 }
                 $.ajax({
-                    type: "deleted",
-                    url: "http://localhost:8080/manager/Deletecourse",
+                    type: "delete",
+                    url: "http://localhost:8080/managers/Deletecourse",
                     contentType: "application/json; charset=utf-8",
                     data:JSON.stringify(data),
                     success: function (value) {

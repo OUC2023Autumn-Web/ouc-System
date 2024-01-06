@@ -15,13 +15,13 @@ public class PublicController {
     public IUserService userService;
     //@PutMapping("/repassword")
     @RequestMapping(value = "/repassword",method = RequestMethod.PUT)
-    public void repassword(@RequestBody User user){
+        public void repassword(@RequestBody User user){
         log.info("修改密码");
         userService.repassword(user);
     }
     //@GetMapping("/information")
     @RequestMapping(value = "/get_information",method = RequestMethod.POST)
-    public ArrayList<User> getinformation(@RequestBody User user){
+    public User getinformation(@RequestBody User user){
         log.info("获得个人信息");
         return userService.getinformation(user);
     }
