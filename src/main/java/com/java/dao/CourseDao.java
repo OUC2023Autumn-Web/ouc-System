@@ -16,6 +16,12 @@ public interface CourseDao {
     void deletecourse(Course course);
 
     void putcourse(Course course);
+
+    void putcourse1(Course course);
+
+    void putcourse2(Course course);
+
+    void deletecourse1(Course course);
     /**
      * 查询所有课程
      *

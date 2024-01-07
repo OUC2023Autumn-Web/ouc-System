@@ -5,12 +5,13 @@
     <title>添加课程</title>
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        @import url(../../sources/css/common.css);
+    </style>
 </head>
-<style>
-    @import url(../../sources/css/common.css);
-</style>
 <body>
 <div id="main">
+    <input class="common_button" style="position: absolute; top:5px; left: 5px" type="button" value="< 返回" @click="return1()"><br>
     <form>
         课程名:<input type="text" v-model="name">
         老师:<input type="text" v-model="teacher">
@@ -45,11 +46,15 @@
                     data:JSON.stringify(data),
                     success: function (value) {
                         alert("成功添加")
+                        window.location.href="./re_courses.html"
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(typeof (errorThrown));
                     }
                 })
+            },
+            return1(){
+                window.location.href="./re_courses.html"
             }
         }
     })

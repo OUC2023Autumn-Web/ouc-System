@@ -5,6 +5,7 @@ package com.java.model;
 public class User {
     public String identity;
     public String username;
+    public String Sname;
     public String new_password;
     public String phone;
     public String college;

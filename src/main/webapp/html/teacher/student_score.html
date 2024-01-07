@@ -5,26 +5,29 @@
     <title>评分</title>
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        @import url(../../sources/css/common.css);
+    </style>
 </head>
 <body>
 <div id="text">
-    <h1>{{course_name}}学生名单</h1>
-    <input type="button" value="返回" @click="return1()">
-    <table border="1px" cellspacing="0">
-        <tr>
-            <th>序号</th>>
+    <h2 style="text-align: center">{{course_name}}学生名单</h2>
+    <input class="common_button" style="position: absolute; top:5px; left: 5px" type="button" value="< 返回" @click="return1()">
+    <table style="border-style: hidden; width: 100%;">
+        <tr class="header" style="border-style: hidden;box-shadow: 0 0 0 1px black;border-radius: 5px 5px 0 0;">
+            <th>序号</th>
             <th>姓名</th>
             <th>学号</th>
             <th>分数</th>
         </tr>
-        <tr v-for="(student,index) in students">
+        <tr style="box-shadow: 0 0 0 1px black;" v-for="(student,index) in students">
             <td>{{ index+1 }}</td>
             <td>{{ student.studentname }}</td>
             <td>{{ student.username }}</td>
             <td><input type="text" v-model="score[index]"></td>
         </tr>
     </table>
-    <input type="button" value="提交" @click="submits()">
+    <input class="common_button" style="position: absolute; top:5px; right: 5px" type="button" value="提交" @click="submits()">
 </div>
 </body>
 <script src="../../sources/js/jquery.js"></script>

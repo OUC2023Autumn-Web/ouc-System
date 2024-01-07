@@ -5,6 +5,7 @@ public class Course {
     String name;
     String time;
     String teacher;
+    String username;
     int score;
 
     public String getNumber() {
@@ -37,6 +38,13 @@ public class Course {
 
     public void setTeacher(String teacher) {
         this.teacher = teacher;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getScore() {

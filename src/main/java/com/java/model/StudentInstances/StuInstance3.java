@@ -3,6 +3,7 @@ package com.java.model.StudentInstances;
 public class StuInstance3 {
     public String username;
     public String number;
+    public String state;
 
     public String getUsername() {
         return username;

@@ -5,21 +5,24 @@
     <title>评分</title>
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        @import url(../../sources/css/common.css);
+    </style>
 </head>
 <body>
 <div id="main">
-    <table border="1px" cellspacing="0">
-        <tr>
-            <th>序号</th>>
+    <table style="border-style: hidden; width: 100%;">
+        <tr class="header" style="border-style: hidden;box-shadow: 0 0 0 1px black;border-radius: 5px 5px 0 0;">
+            <th>序号</th>
             <th>课程名</th>
             <th>时间</th>
             <th>评分</th>
         </tr>
-        <tr v-for="(course,index) in courses">
+        <tr style="box-shadow: 0 0 0 1px black;" v-for="(course,index) in courses">
             <td>{{ index+1 }}</td>
             <td>{{ course.name }}</td>
             <td>{{ course.time }}</td>
-            <td><input type="button" value="评分" @click="write_score(course.name,course.time)"></td>
+            <td><input class="common_button" type="button" value="评分" @click="write_score(course.name,course.time)"></td>
         </tr>
     </table>
 </div>

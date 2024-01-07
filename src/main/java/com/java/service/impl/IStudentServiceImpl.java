@@ -54,6 +54,7 @@ public class IStudentServiceImpl implements IStudentService {
         StuInstance3 stu3 = new StuInstance3();
         stu3.number=number;
         stu3.username=username;
+        stu3.state="初修";
         studentDao.putCourse(stu3);
         return 1;
     }
@@ -99,10 +100,10 @@ public class IStudentServiceImpl implements IStudentService {
             if(time.charAt(0)=='九'){
                 x=8;
             }
-            if(time.charAt(0)=='十' && time.charAt(0)=='十'){
+            if(time.charAt(0)=='十' && time.charAt(1)=='十'){
                 x=9;
             }
-            if(time.charAt(0)=='十' && time.charAt(0)=='一'){
+            if(time.charAt(0)=='十' && time.charAt(1)=='一'){
                 x=10;
             }
             y=x+1;

@@ -15,10 +15,26 @@
         where number = #{number};
     </select>
 
+    <select id="deletecourse1" parameterType="com.java.model.Course">
+        delete
+        from sc
+        where number = #{number};
+    </select>
     <select id="putcourse" parameterType="com.java.model.Course">
-        insert
-        into course(number,name,time,teacher,username,score)
-        values (#{number}, #{name}, #{time}, #{teacher}, (select username from users where Sname=#{teacher}),#{score})
+        insert into course(number)
+        values(#{number});
+    </select>
+
+    <select id="putcourse1" parameterType="com.java.model.Course">
+        update course
+        set name=#{name},time=#{time},teacher=#{teacher},score=#{score}
+        where number=#{number};
+    </select>
+
+    <select id="putcourse2" parameterType="com.java.model.Course">
+        update course
+        set username=(select username from users where Sname = #{teacher})
+        where number=#{number};
     </select>
     <!--    查询所有-->
     <select id="findAll" resultType="com.java.model.Course">

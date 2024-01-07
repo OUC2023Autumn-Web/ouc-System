@@ -5,14 +5,16 @@
     <title>个人信息</title>
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        @import url(../../sources/css/common.css);
+    </style>
 </head>
-<style>
-    @import url(../../sources/css/common.css);
-</style>
 <body>
 <div id="main">
-    身份:{{ identity }}<br />
-    用户名:<input type="text" v-model="username" disabled><br />
+    身份:<input type="text" v-model="identity" disabled><br />
+    姓名：<input type="text" v-model="name" disabled><br />
+    <div v-if="identity==='student'">学号:<input type="text" v-model="username" disabled><br /></div>
+    <div v-else>工号:<input type="text" v-model="username" disabled><br /></div>
     学院:<input type="text" v-model="college" disabled><br />
     电话:<input type="text" v-model="phone"><br />
     <input class="common_button" type="button" value="提交修改" @click="sub()">
@@ -26,7 +28,8 @@
             identity:"",
 			username:"",
 			college:"",
-            phone:""
+            phone:"",
+            name:""
         },
         mounted(){
             var that=this;
@@ -44,6 +47,7 @@
                     that.username=value.username
                     that.college=value.college
                     that.phone=value.phone
+                    that.name=value.Sname
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert(typeof (errorThrown));

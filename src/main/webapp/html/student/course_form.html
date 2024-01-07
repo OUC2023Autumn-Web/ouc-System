@@ -5,14 +5,14 @@
     <title>课程表</title>
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        @import url(../../sources/css/common.css);
+    </style>
 </head>
-<style>
-    @import url(../../sources/css/common.css);
-</style>
 <body>
 <div id="main">
-    <table border="1px" cellspacing="0">
-        <tr>
+    <table style="border-style: hidden; width: 100%;">
+        <tr class="header" style="border-style: hidden;box-shadow: 0 0 0 1px black;border-radius: 5px 5px 0 0;">
             <th></th>
             <th>周一</th>
             <th>周二</th>
@@ -20,17 +20,17 @@
             <th>周四</th>
             <th>周五</th>
             <th>周六</th>
-            <th>周天</th>>
+            <th>周天</th>
         </tr>
-        <tr v-for="(course,index) in courses">
-            <td>{{index+1}}</td>
-            <td>{{course.Monday}}</td>
-            <td>{{course.Tuesday}}</td>
-            <td>{{course.Wednesday}}</td>
-            <td>{{course.Thursday}}</td>
-            <td>{{course.Friday}}</td>
-            <td>{{course.Saturday}}</td>
-            <td>{{course.Sunday}}</td>>
+        <tr style="box-shadow: 0 0 0 1px black;" v-for="(course,index) in courses">
+            <td class="courseform">{{index+1}}</td>
+            <td class="courseform">{{course.Monday}}</td>
+            <td class="courseform">{{course.Tuesday}}</td>
+            <td class="courseform">{{course.Wednesday}}</td>
+            <td class="courseform">{{course.Thursday}}</td>
+            <td class="courseform">{{course.Friday}}</td>
+            <td class="courseform">{{course.Saturday}}</td>
+            <td class="courseform">{{course.Sunday}}</td>
         </tr>
     </table>
 </div>

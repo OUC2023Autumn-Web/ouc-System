@@ -30,8 +30,8 @@
     </select>
 
     <select id="putCourse" parameterType="com.java.model.StudentInstances.StuInstance3" >
-        insert into sc (username,number,name,time,teacher,score1,score2)
-        values (#{username}, #{number},(select name from course where number = #{number}),(select time from course where number = #{number}),(select teacher from course where number = #{number}),(select score from course where number = #{number}), NULL);
+        insert into sc (username,number,name,time,teacher,score1,score2,state,studentname,teachernumber)
+        values (#{username}, #{number},(select name from course where number = #{number}),(select time from course where number = #{number}),(select teacher from course where number = #{number}),(select score from course where number = #{number}), NULL,#{state},(select Sname from users where username = #{username}),(select username from course where number = #{number}));
     </select>
 
     <select id="getALLtime" parameterType="com.java.model.StudentInstances.StuInstance3" resultType="com.java.model.StudentInstances.StuInstance1">

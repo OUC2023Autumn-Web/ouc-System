@@ -5,14 +5,14 @@
     <title>选课预览</title>
     <script src="../../sources/js/vue.js"></script> <!--vue引入-->
     <script src="../../sources/js/axios.min.js"></script>  <!--axios引入-->
+    <style>
+        @import url(../../sources/css/common.css);
+    </style>
 </head>
-<style>
-    @import url(../../sources/css/common.css);
-</style>
 <body>
 <div id="main">
-    <table border="1px" cellspacing="0">
-        <tr>
+    <table style="border-style: hidden; width: 100%;">
+        <tr class="header" style="border-style: hidden;box-shadow: 0 0 0 1px black;border-radius: 5px 5px 0 0;">
             <th>序号</th>
             <th>课程号</th>
             <th>课程名</th>
@@ -20,9 +20,9 @@
             <th>授课老师</th>
             <th>学分</th>
             <th>成绩</th>
-            <th>操作</th>>
+            <th>操作</th>
         </tr>
-        <tr v-for="(information,index) in informations">
+        <tr style="box-shadow: 0 0 0 1px black;" v-for="(information,index) in informations">
             <td>{{ index+1 }}</td>
             <td>{{ information.number }}</td>
             <td>{{ information.name }}</td>
@@ -30,7 +30,7 @@
             <td>{{ information.teacher }}</td>
             <td>{{ information.score1 }}</td>
             <td>{{ information.score2 }}</td>
-            <td><input class="common_button"  type="button" value="删除" @click="deleted(information.number)"><td>
+            <td><input class="common_button"  type="button" value="删除" @click="deleted(information.number)"></td>
         </tr>
     </table>
 </div>

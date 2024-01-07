@@ -22,10 +22,13 @@ public class IAdministratorServiceImpl implements IAdministratorService {
     public void putcourse(Course course) {
         course.setNumber("104");
         courseDao.putcourse(course);
+        courseDao.putcourse1(course);
+        courseDao.putcourse2(course);
     }
 
     @Override
     public void deletecourse(Course course) {
         courseDao.deletecourse(course);
+        courseDao.deletecourse1(course);
     }
 }

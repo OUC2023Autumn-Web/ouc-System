@@ -20,7 +20,7 @@
     </select>
 
     <select id="getinformation"  resultType="com.java.model.User" parameterType="com.java.model.User">
-        select identity,username,college,phone
+        select identity,username,college,phone,sname
         from users
         where username = #{username}
           and identity = #{identity}
